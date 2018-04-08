@@ -1,0 +1,22 @@
+#!/bin/bash
+PURPLE='\033[0;95m'
+GREEN='\033[0;32m'
+NC='\033[0m'
+
+error() {
+  echo "$@"
+  exit 1
+}
+
+run() {
+  "$@" && echo "$@ ran successfully." || error "$@ failed, commit aborted."
+}
+
+echo -e "${PURPLE}Pre-commit running...${NC}"
+
+run ./script/format-code
+
+STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM | tr '\n' ' ')
+echo "$STAGED_FILES" | xargs git add
+
+echo -e "${GREEN}Pre-commit passed!${NC}"

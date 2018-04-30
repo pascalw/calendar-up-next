@@ -1,23 +1,15 @@
 name:                calendar-up-next
 version:             0.1.0.0
-github:              "githubuser/calendar-up-next"
-license:             BSD3
-author:              "Author name here"
-maintainer:          "example@example.com"
-copyright:           "2018 Author name here"
+github:              "pascalw/calendar-up-next"
+license:             MIT
+author:              "Pascal Widdershoven"
+maintainer:          "hello@pascalw.me"
+copyright:           "2018 Pascal Widdershoven"
 
 extra-source-files:
 - README.md
-- ChangeLog.md
 
-# Metadata used when publishing your package
-# synopsis:            Short description of your package
-# category:            Web
-
-# To avoid duplicated efforts in documentation and dealing with the
-# complications of embedding Haddock markup inside cabal files, it is
-# common to point users to the README.md file.
-description:         Please see the README on Github at <https://github.com/githubuser/calendar-up-next#readme>
+description:         Please see the README on Github at <https://github.com/pascalw/calendar-up-next#readme>
 
 dependencies:
 - base >= 4.7 && < 5

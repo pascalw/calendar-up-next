@@ -12,7 +12,7 @@ To use it with your Google account follow these steps:
 
 1. Create a Google service account in the [Google API console](https://console.developers.google.com/permissions/serviceaccounts).
 2. Share the calendar you want to query with the email address of the service account.
-3. Call the `calendar-up-next` script with the following parameters:
+3. Call the `calendar-up-next` binary with the following parameters:
 
 ```sh
 $ calendar-up-next \

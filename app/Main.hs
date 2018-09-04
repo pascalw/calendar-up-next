@@ -34,12 +34,18 @@ parsedCmdArgs = CalendarConfig
 formatTime' :: FormatTime t => t -> String
 formatTime' = formatTime defaultTimeLocale "%H:%M"
 
+formatLocation :: Calendar.Event -> String
+formatLocation event = case Calendar.location event of
+  Nothing         -> ""
+  (Just location) -> printf "@ %s " location
+
 formatEvent :: Calendar.Event -> TimeZone -> String
-formatEvent event timezone = printf "%s [%s]" title formattedStart
+formatEvent event timezone = printf "%s %s[%s]" title location formattedStart
   where title = Calendar.title event
         formattedStart = formatTime' localStart
         start = Calendar.start event
         localStart = utcToLocalTime timezone start
+        location = formatLocation event
 
 main :: IO ()
 main = getNextEvent =<< execParser opts

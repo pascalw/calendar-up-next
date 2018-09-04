@@ -7,12 +7,13 @@ module Calendar.Events
 
 import           Data.Aeson
 import qualified Data.Text       as T
-import           Data.Time.Clock (UTCTime, getCurrentTime)
+import           Data.Time.Clock (UTCTime)
 import           GHC.Generics
 
 data Event =
-  Event { title :: !T.Text
-        , start :: !UTCTime
+  Event { title    :: !T.Text
+        , start    :: !UTCTime
+        , location :: Maybe T.Text
     } deriving (Show)
 
 instance FromJSON Event where
@@ -21,6 +22,7 @@ instance FromJSON Event where
 
     Event <$> o .: "summary"
           <*> start .: "dateTime"
+          <*> o .:? "location"
 
 data Events =
   Events { items :: ![Event]

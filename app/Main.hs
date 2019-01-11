@@ -43,7 +43,7 @@ formatEvent :: Calendar.Event -> TimeZone -> String
 formatEvent event timezone = printf "%s %s[%s]" title location formattedStart
   where title = Calendar.title event
         formattedStart = formatTime' localStart
-        start = Calendar.start event
+        Just start = Calendar.start event
         localStart = utcToLocalTime timezone start
         location = formatLocation event
 

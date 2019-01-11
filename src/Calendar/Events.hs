@@ -12,7 +12,7 @@ import           GHC.Generics
 
 data Event =
   Event { title    :: !T.Text
-        , start    :: !UTCTime
+        , start    :: Maybe UTCTime
         , location :: Maybe T.Text
     } deriving (Show)
 
@@ -21,7 +21,7 @@ instance FromJSON Event where
     start <- o .: "start"
 
     Event <$> o .: "summary"
-          <*> start .: "dateTime"
+          <*> start .:? "dateTime"
           <*> o .:? "location"
 
 data Events =

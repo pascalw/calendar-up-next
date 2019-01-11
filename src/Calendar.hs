@@ -68,7 +68,10 @@ getNextEvent calendarAccount credentials fromTime = do
   return $ firstUnstarted fromTime items
 
 notStarted :: UTCTime -> Event -> Bool
-notStarted time event = diffUTCTime (start event) time > 0
+-- notStarted time event = diffUTCTime (start event) time > 0
+notStarted time event =
+  case start event of Nothing        -> False
+                      Just startTime -> diffUTCTime startTime time > 0
 
 firstUnstarted :: UTCTime -> [Event] -> (Maybe Event)
 firstUnstarted _ [] = Nothing
